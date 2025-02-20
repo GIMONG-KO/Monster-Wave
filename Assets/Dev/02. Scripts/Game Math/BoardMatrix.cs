@@ -1,5 +1,5 @@
-﻿using System.Reflection;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class BoardMatrix : MonoBehaviour
 {
@@ -12,6 +12,17 @@ public class BoardMatrix : MonoBehaviour
     public GameObject turretPrefab;
     public GameObject[] turrets;
 
+    public Button[] buttons;
+
+    void Awake()
+    {
+        buttons[0].onClick.AddListener(() => OnChangeTurret(0));
+        buttons[1].onClick.AddListener(() => OnChangeTurret(1));
+        buttons[2].onClick.AddListener(() => OnChangeTurret(2));
+        buttons[3].onClick.AddListener(() => OnChangeTurret(3));
+        buttons[4].onClick.AddListener(() => OnChangeTurret(4));
+    }
+    
     void Start()
     {
         tileArray = new int[(int)boardSize.x, (int)boardSize.y];
