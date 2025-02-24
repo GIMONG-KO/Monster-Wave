@@ -418,15 +418,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 660202475}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b62be0baf6b4c8a95f5f47e29f13654, type: 3}
+  m_Script: {fileID: 11500000, guid: 4dc886e0e8be4fe0b9c436b167155601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 374347123}
-  - {fileID: 1806620434}
-  - {fileID: 1854150556}
-  - {fileID: 1731799477}
-  - {fileID: 1965806171}
+  numbers: 0100000002000000030000000400000005000000060000000700000008000000090000000a000000
 --- !u!1 &729384429
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &729384430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1743,7 +1738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1989320894
 MonoBehaviour:
   m_ObjectHideFlags: 0
