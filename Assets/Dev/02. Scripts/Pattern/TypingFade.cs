@@ -28,7 +28,7 @@ public class TypingFade : MonoBehaviour
         for (int i = 0; i < textCount; i++)
         {
             textUI.text += currentText[i];
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.15f);
         }
 
         yield return new WaitForSeconds(1f);

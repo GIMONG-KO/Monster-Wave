@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &80203095
 RectTransform:
   m_ObjectHideFlags: 0
@@ -294,6 +294,8 @@ Transform:
   m_Children:
   - {fileID: 661586277}
   - {fileID: 152842418}
+  - {fileID: 1158185857}
+  - {fileID: 1179197459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &380438287
@@ -793,6 +795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 661586277}
   - component: {fileID: 661586278}
+  - component: {fileID: 661586279}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -828,6 +831,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   e_GameType: 0
+--- !u!114 &661586279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661586276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ade1636dd549c29cde1ea04ca02f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPrefabs:
+  - {fileID: 193048, guid: be3cbaf02f5437e4a8956b882b64ad92, type: 3}
+  - {fileID: 165622, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
+  - {fileID: 143816, guid: 2e6391b851bd6104aa35c25d824e40b1, type: 3}
+  maxTime: 3
+  timer: 0
 --- !u!1 &664882945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,6 +1302,99 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094746588}
   m_CullTransparentMesh: 1
+--- !u!1 &1158185856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1158185857}
+  - component: {fileID: 1158185858}
+  m_Layer: 0
+  m_Name: Custom Pool Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1158185857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158185856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 184862099}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1158185858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158185856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca187c8adaa42678b28dbc53aff3a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 193048, guid: be3cbaf02f5437e4a8956b882b64ad92, type: 3}
+--- !u!1 &1179197458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1179197459}
+  - component: {fileID: 1179197460}
+  m_Layer: 0
+  m_Name: Unity Pool Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1179197459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179197458}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 184862099}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1179197460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179197458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e69119c8ecfc24aa3d4df7fe871d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolItemPrefabs:
+  - {fileID: 193048, guid: be3cbaf02f5437e4a8956b882b64ad92, type: 3}
+  - {fileID: 165622, guid: b7f1dfc4e01f4a645a02f3816571583e, type: 3}
+  - {fileID: 143816, guid: 2e6391b851bd6104aa35c25d824e40b1, type: 3}
 --- !u!1 &1226035055
 GameObject:
   m_ObjectHideFlags: 0

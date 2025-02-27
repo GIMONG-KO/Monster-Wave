@@ -26,19 +26,12 @@ public class Monster : MonoBehaviour
     void Start()
     {
         Init();
-
-        // anim = GetComponent<Animator>();
     }
 
     void Update()
     {
         Move();
     }
-
-    // void OnMouseDown()
-    // {
-    //     Hit(1);
-    // }
 
     public void OnHit(float damage)
     {
@@ -92,6 +85,12 @@ public class Monster : MonoBehaviour
         if (isMove)
         {
             this.transform.Translate(Vector3.forward * Time.deltaTime * speed);
+
+            if (this.transform.position.z >= 20f)
+            {
+                // CustomPoolManager.Instance.SetPool(this.gameObject);
+                this.GetComponent<PoolItem>().OnSetPoolItem();
+            }
         }
     }
 }

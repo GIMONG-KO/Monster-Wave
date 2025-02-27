@@ -32,6 +32,21 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
          return _uiManager;
       }
    }
+
+   private Spawner spawner;
+   
+   private PoolManager _poolManager;
+   public PoolManager poolManager
+   {
+      get
+      {
+         if (_poolManager == null)
+            _poolManager = FindObjectOfType<PoolManager>(true);
+         
+         return _poolManager;
+      }
+   }
+   
    #endregion
 
    protected override void Awake()
@@ -41,6 +56,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
    void Start()
    {
+      spawner = this.GetComponent<Spawner>();
+      
       boardManager.CreateBoard();
    }
 
@@ -55,6 +72,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             boardManager.RayToBoard();
             break;
          case GameType.PLAY:
+            spawner.CreateMonster();
             break;
          case GameType.OUTRO:
             break;
