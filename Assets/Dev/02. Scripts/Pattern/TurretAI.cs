@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class TurretAI : MonoBehaviour
 {
-    public enum TurretState { PATROL, TRACKING, ATTACK }
-    public TurretState e_TurretState;
+    public ITurretState currentState;
+    
+    private ITurretState patrolState;
+    private ITurretState trackingState;
+    private ITurretState attackState;
 
-    private float turnSpeed = 1f;
-    private float theta, timer;
-
-    private Animator anim;
     public GameObject bulletPrefab;
     public ParticleSystem ps;
     public Transform shootTf;
-    public float shootCooldown = 1f;
     
     public List<Transform> targets = new List<Transform>();
     public Transform headTf;
@@ -23,24 +21,16 @@ public class TurretAI : MonoBehaviour
 
     void Start()
     {
-        anim = this.GetComponent<Animator>();
+        patrolState = this.gameObject.AddComponent<TurretPatrol>();
+        trackingState = this.gameObject.AddComponent<TurretTracking>();
+        attackState = this.gameObject.AddComponent<TurretAttack>();
+        
+        ChangeToPatrol();
     }
 
     void Update()
     {
-        switch (e_TurretState)
-        {
-            case TurretState.PATROL:
-                RotationTurret();
-                break;
-            case TurretState.TRACKING:
-                LookAtTarget();
-                ShootCooldown();
-                break;
-            case TurretState.ATTACK:
-                Shoot();
-                break;
-        }
+        currentState?.Stay();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -51,7 +41,7 @@ public class TurretAI : MonoBehaviour
 
             SetTarget();
             
-            e_TurretState = TurretState.TRACKING;
+            ChangeToTracking();
         }
     }
 
@@ -74,40 +64,16 @@ public class TurretAI : MonoBehaviour
             currentTarget = null;
     }
 
-    private void RotationTurret()
-    {
-        theta += Time.deltaTime * turnSpeed;
-        headTf.localRotation = Quaternion.Euler(Vector3.up * 60f * Mathf.Sin(theta));
-    }
-
-    private void LookAtTarget()
-    {
-        var targetDir = (currentTarget.position - this.transform.position).normalized;
-        headTf.rotation = Quaternion.Slerp(headTf.rotation, Quaternion.LookRotation(targetDir), 0.1f);
-    }
-
-    private void ShootCooldown()
-    {
-        timer += Time.deltaTime;
-        if (timer >= shootCooldown)
-        {
-            timer = 0f;
-            e_TurretState = TurretState.ATTACK;
-        }
-    }
+    public void ChangeToPatrol() => OnChageState(patrolState);
+    public void ChangeToTracking() => OnChageState(trackingState);
+    public void ChangeToAttack() => OnChageState(attackState);
     
-    private void Shoot()
+    public void OnChageState(ITurretState newState)
     {
-        ps.Play();
-        anim.SetTrigger("Shoot");
-        CreateBullet();
-
-        e_TurretState = TurretState.TRACKING;
-    }
-
-    private void CreateBullet()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, shootTf.position, shootTf.rotation);
-        bullet.GetComponent<Rigidbody>().AddForce(shootTf.forward * 50f, ForceMode.Impulse);
+        currentState?.Exit();
+        
+        currentState = newState;
+        
+        currentState?.Enter();
     }
 }

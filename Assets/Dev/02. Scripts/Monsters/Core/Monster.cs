@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Monster : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class Monster : MonoBehaviour
     public float hp;
 
     public bool isMove = true;
+
+    public static Action<Monster> onMonsterDead;
     
     protected virtual void Init()
     {
@@ -47,6 +51,9 @@ public class Monster : MonoBehaviour
 
         if (hp <= 0)
         {
+
+            onMonsterDead?.Invoke(this);
+            
             anim.SetTrigger("dead");
             this.GetComponent<Collider>().enabled = false;
 
