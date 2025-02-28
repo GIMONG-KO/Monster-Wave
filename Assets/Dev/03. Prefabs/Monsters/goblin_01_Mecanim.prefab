@@ -25660,6 +25660,7 @@ GameObject:
   - component: {fileID: 13593012}
   - component: {fileID: 5493012}
   - component: {fileID: -1500471408063677116}
+  - component: {fileID: -1586190385133882245}
   m_Layer: 0
   m_Name: goblin_01_Mecanim
   m_TagString: MONSTER
@@ -25771,3 +25772,15 @@ MonoBehaviour:
   speed: 0
   hp: 0
   isMove: 1
+--- !u!114 &-1586190385133882245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545bc2e7db40d6f4b882febe32d635fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

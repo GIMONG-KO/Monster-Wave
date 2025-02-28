@@ -3,11 +3,6 @@ using UnityEngine;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-   public enum GameType { INTRO, BUILD, PLAY, OUTRO }
-   public GameType e_GameType = GameType.INTRO;
-
-   private Action gameManagerAction;
-
    #region Manager
    private BoardManager _boardManager;
    public BoardManager boardManager
@@ -32,15 +27,30 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
          return _uiManager;
       }
    }
-   #endregion
 
-   protected override void Awake()
+   private Spawner spawner;
+   
+   private PoolManager _poolManager;
+   public PoolManager poolManager
    {
-      base.Awake();
+      get
+      {
+         if (_poolManager == null)
+            _poolManager = FindObjectOfType<PoolManager>(true);
+         
+         return _poolManager;
+      }
    }
-
+   
+   #endregion
+   
+   public enum GameType { INTRO, BUILD, PLAY, OUTRO }
+   public GameType e_GameType = GameType.INTRO;
+   
    void Start()
    {
+      spawner = this.GetComponent<Spawner>();
+      
       boardManager.CreateBoard();
    }
 
@@ -49,12 +59,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
       switch (e_GameType)
       {
          case GameType.INTRO:
-            // 기능 없음
             break;
          case GameType.BUILD:
             boardManager.RayToBoard();
             break;
          case GameType.PLAY:
+            spawner.CreateMonster();
             break;
          case GameType.OUTRO:
             break;
