@@ -9,7 +9,6 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("MONSTER"))
         {
-            // 몬스터에게 데미지 적용
             other.GetComponent<Monster>().OnHit(1);
         }
     }

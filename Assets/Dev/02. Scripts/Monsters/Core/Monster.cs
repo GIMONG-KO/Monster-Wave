@@ -7,7 +7,6 @@ using Random = UnityEngine.Random;
 
 public class Monster : MonoBehaviour
 {
-    private Turret turret;
     private ItemManager itemManager;
     
     private Animator anim;
@@ -23,7 +22,6 @@ public class Monster : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
-        turret = FindObjectOfType<Turret>();
         itemManager = FindObjectOfType<ItemManager>();
     }
     
@@ -51,13 +49,10 @@ public class Monster : MonoBehaviour
 
         if (hp <= 0)
         {
-
             onMonsterDead?.Invoke(this);
             
             anim.SetTrigger("dead");
             this.GetComponent<Collider>().enabled = false;
-
-            turret.SetTarget(this.transform);
             
             GameObject dropItem = itemManager.CreateItem();
             

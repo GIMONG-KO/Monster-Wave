@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000014011301926}
   - component: {fileID: 33000012524792460}
   - component: {fileID: 23000012129090856}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: canon_lvl_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4000013869490946}
   - component: {fileID: 33000013619817420}
   - component: {fileID: 23000011053105318}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: gunpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,9 +181,9 @@ GameObject:
   - component: {fileID: 33000012028477070}
   - component: {fileID: 23000011533064888}
   - component: {fileID: 95000012794672780}
-  - component: {fileID: 714282688284225876}
   - component: {fileID: 2489797295778710091}
-  m_Layer: 0
+  - component: {fileID: 714282688284225876}
+  m_Layer: 2
   m_Name: Canon_lvl_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,27 +277,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &714282688284225876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013566905100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1c71e9058544a609eed169021a2925f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  e_TurretState: 0
-  bulletPrefab: {fileID: 3145781084436640239, guid: e092f6ffbbffbb74ab53c47bfcac2e4a,
-    type: 3}
-  ps: {fileID: 2140012176448807784}
-  shootTf: {fileID: 6077621296962021513}
-  shootCooldown: 1
-  targets: []
-  headTf: {fileID: 4000014011301926}
-  currentTarget: {fileID: 0}
 --- !u!135 &2489797295778710091
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -319,6 +298,26 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 5
   m_Center: {x: 0, y: 0.23358168, z: 0.0042273253}
+--- !u!114 &714282688284225876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013566905100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c71e9058544a609eed169021a2925f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 3145781084436640239, guid: e092f6ffbbffbb74ab53c47bfcac2e4a,
+    type: 3}
+  ps: {fileID: 2140012176448807784}
+  shootTf: {fileID: 6077621296962021513}
+  targets: []
+  headTf: {fileID: 4000014011301926}
+  currentTarget: {fileID: 0}
+  shootCooldown: 3
 --- !u!1 &8907328714550353250
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6077621296962021513}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Shoot Tf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,9 +357,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4000013869490946}
     m_Modifications:
+    - target: {fileID: 1116040971840050, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222506973823736, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1234649754841732, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306587544184404, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
       propertyPath: m_Name
       value: VFX_M4 Muzzle Flash
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404526102996912, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462184510508918, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701918230128312, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
       propertyPath: m_LocalPosition.x

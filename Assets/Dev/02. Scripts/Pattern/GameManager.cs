@@ -3,11 +3,6 @@ using UnityEngine;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-   public enum GameType { INTRO, BUILD, PLAY, OUTRO }
-   public GameType e_GameType = GameType.INTRO;
-
-   private Action gameManagerAction;
-
    #region Manager
    private BoardManager _boardManager;
    public BoardManager boardManager
@@ -48,12 +43,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
    }
    
    #endregion
-
-   protected override void Awake()
-   {
-      base.Awake();
-   }
-
+   
+   public enum GameType { INTRO, BUILD, PLAY, OUTRO }
+   public GameType e_GameType = GameType.INTRO;
+   
    void Start()
    {
       spawner = this.GetComponent<Spawner>();
@@ -66,7 +59,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
       switch (e_GameType)
       {
          case GameType.INTRO:
-            // 기능 없음
             break;
          case GameType.BUILD:
             boardManager.RayToBoard();

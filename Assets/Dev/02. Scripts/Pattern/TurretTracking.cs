@@ -5,7 +5,6 @@ public class TurretTracking : MonoBehaviour, ITurretState
     public TurretAI turret { get; set; }
     
     private float timer;
-    public float shootCooldown = 1f;
     
     void Start()
     {
@@ -19,8 +18,13 @@ public class TurretTracking : MonoBehaviour, ITurretState
 
     public void Stay()
     {
-        LookAtTarget();
-        ShootCooldown();
+        if (turret.targets.Count > 0)
+        {
+            LookAtTarget();
+            ShootCooldown();
+        }
+        else
+            turret.ChangeToPatrol();
     }
 
     public void Exit()
@@ -37,7 +41,7 @@ public class TurretTracking : MonoBehaviour, ITurretState
     private void ShootCooldown()
     {
         timer += Time.deltaTime;
-        if (timer >= shootCooldown)
+        if (timer >= turret.shootCooldown)
         {
             timer = 0f;
             turret.ChangeToAttack();

@@ -18,7 +18,9 @@ public class TurretAI : MonoBehaviour
     public Transform headTf;
 
     public Transform currentTarget;
-
+    
+    public float shootCooldown = 1f;
+    
     void Start()
     {
         patrolState = this.gameObject.AddComponent<TurretPatrol>();
