@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Monster : MonoBehaviour
 {
-    private Turret turret;
     private ItemManager itemManager;
     
     private Animator anim;
@@ -14,31 +15,25 @@ public class Monster : MonoBehaviour
     public float hp;
 
     public bool isMove = true;
+
+    public static Action<Monster> onMonsterDead;
     
     protected virtual void Init()
     {
         anim = GetComponent<Animator>();
 
-        turret = FindObjectOfType<Turret>();
         itemManager = FindObjectOfType<ItemManager>();
     }
     
     void Start()
     {
         Init();
-
-        // anim = GetComponent<Animator>();
     }
 
     void Update()
     {
         Move();
     }
-
-    // void OnMouseDown()
-    // {
-    //     Hit(1);
-    // }
 
     public void OnHit(float damage)
     {
@@ -54,10 +49,10 @@ public class Monster : MonoBehaviour
 
         if (hp <= 0)
         {
+            onMonsterDead?.Invoke(this);
+            
             anim.SetTrigger("dead");
             this.GetComponent<Collider>().enabled = false;
-
-            turret.SetTarget(this.transform);
             
             GameObject dropItem = itemManager.CreateItem();
             
@@ -92,6 +87,12 @@ public class Monster : MonoBehaviour
         if (isMove)
         {
             this.transform.Translate(Vector3.forward * Time.deltaTime * speed);
+
+            if (this.transform.position.z >= 20f)
+            {
+                // CustomPoolManager.Instance.SetPool(this.gameObject);
+                this.GetComponent<PoolItem>().OnSetPoolItem();
+            }
         }
     }
 }
